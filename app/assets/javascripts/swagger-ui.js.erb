@@ -1720,6 +1720,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
       };
       o.request = {};
       o.request.url = this.invocationUrl;
+      o.url = this.invocationUrl;
       o.status = data.status;
       return o;
     };
@@ -1843,7 +1844,6 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
     };
 
     OperationView.prototype.showStatus = function(response) {
-      console.log(response);
       var code, content, contentType, headers, pre, response_body;
       content = response.data;
       headers = response.headers;
