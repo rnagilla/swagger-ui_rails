@@ -1713,7 +1713,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
       o.content.data = data.responseText;
       o.getHeaders = function() {
         return {
-          "Content-Type": data.headers("Content-Type")
+          "Content-Type": (data.headers && data.headers("Content-Type")) || (data.getResponseHeader && data.getResponseHeader('Content-Type'))
         };
       };
       o.request = {};
