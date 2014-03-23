@@ -1711,6 +1711,8 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
       o = {};
       o.content = {};
       o.content.data = data.responseText;
+      o.data = data.responseText;
+      o.headers = data.getAllResponseHeaders();
       o.getHeaders = function() {
         return {
           "Content-Type": (data.headers && data.headers("Content-Type")) || (data.getResponseHeader && data.getResponseHeader('Content-Type'))
