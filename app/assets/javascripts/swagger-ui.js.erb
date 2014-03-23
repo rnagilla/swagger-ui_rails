@@ -1843,7 +1843,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
     };
 
     OperationView.prototype.showStatus = function(response) {
-      console.log(response, response.getHeaders());
+      console.log(response);
       var code, content, contentType, headers, pre, response_body;
       content = response.data;
       headers = response.headers;
