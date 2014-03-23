@@ -1712,7 +1712,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
       o.content = {};
       o.content.data = data.responseText;
       o.data = data.responseText;
-      o.headers = data.getAllResponseHeaders();
+      o.headers = { 'Content-Type': data.getResponseHeader('Content-Type') }
       o.getHeaders = function() {
         return {
           "Content-Type": (data.headers && data.headers("Content-Type")) || (data.getResponseHeader && data.getResponseHeader('Content-Type'))
@@ -1870,10 +1870,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
       $(".request_url", $(this.el)).html("<pre>" + response.url + "</pre>");
       $(".response_code", $(this.el)).html("<pre>" + response.status + "</pre>");
       $(".response_body", $(this.el)).html(response_body);
-      if (response && response.headers) {
-        ($(".response_headers", $(this.el)).html("<pre>" + JSON.stringify(response.headers, null, "  ") + '' || '').replace(/\n/g, "<br>") + "</pre>");
-      }
-
+      $(".response_headers", $(this.el)).html("<pre>" + JSON.stringify(response.headers, null, "  ").replace(/\n/g, "<br>") + "</pre>");
       $(".response", $(this.el)).slideDown();
       $(".response_hider", $(this.el)).show();
       $(".response_throbber", $(this.el)).hide();
