@@ -2,6 +2,7 @@
   $(function () {
     window.swaggerUi = new SwaggerUi({
       url: '<%= discovery_url %>',
+      fileBaseUrl: '<%= file_base_url %>',
       <% if defined?(api_key) %>
         apiKey: '<%= api_key %>',
       <% end %>
