@@ -13,6 +13,8 @@
   SwaggerApi = (function() {
     SwaggerApi.prototype.url = "http://api.wordnik.com/v4/resources.json";
 
+    SwaggerApi.prototype.fileBaseUrl = null;
+
     SwaggerApi.prototype.debug = false;
 
     SwaggerApi.prototype.basePath = null;
@@ -41,6 +43,11 @@
       if (options.url != null) {
         this.url = options.url;
       }
+      
+      if (options.fileBaseUrl != null) {
+        this.fileBaseUrl = options.fileBaseUrl;
+      }
+      
       if (options.success != null) {
         this.success = options.success;
       }
@@ -304,6 +311,8 @@
         }
         if (this.path.substring(0, 4) === 'http') {
           this.url = this.path.replace('{format}', 'json');
+        } else if (this.api.fileBaseUrl) {
+          this.url = this.api.fileBaseUrl + this.path.replace('{format}', 'json');
         } else {
           this.url = this.api.basePath + this.path.replace('{format}', 'json');
         }
